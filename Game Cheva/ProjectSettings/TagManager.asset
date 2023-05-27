@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Ground
-  - Batas Kiri
-  - Batas Kanan
-  - Enemy
-  - Peluru
+  tags: []
   layers:
   - Default
   - TransparentFX

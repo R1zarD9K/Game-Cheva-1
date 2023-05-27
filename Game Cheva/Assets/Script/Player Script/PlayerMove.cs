@@ -4,77 +4,77 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    Vector3 kiri = new Vector3(0, 180, 0);
+    public float moveSpeed = 20f; // Increased move speed
     float horizontal;
-    bool ayam = false;
-    
+
+    public int checker = 0;
+    [SerializeField] float jumpHeight = 5;
+    [SerializeField] float gravityScale = 5;
+    [SerializeField] float fallGravityScale = 15;
+    public float playerSpeed = 0;
+    float jumpForce = 15;
     Rigidbody2D rb;
 
-    public float playerSpeed = 0;
-    public float jumpForce = 0;
-    void Start()
+    bool hasJumped = false;
+    float buttonPressedTime;
+    bool jumping;
+    float buttonPressWindow = 0.2f;
+
+    bool jumpCancelled;
+    float cancelRate = 50;
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    
-    void Update()
+
+    private void Update()
     {
-        if (transform.rotation.y == 0)
+        horizontal = Input.GetAxis("Horizontal");
+
+        if (!hasJumped && Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            rb.gravityScale = gravityScale;
+            jumping = true;
+            hasJumped = true;
+            buttonPressedTime = 0;
+        }
+
+        if (jumping)
+        {
+            buttonPressedTime += Time.deltaTime;
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+            if (buttonPressedTime > buttonPressWindow || Input.GetKeyUp(KeyCode.Space))
             {
-                transform.Rotate(kiri);
+                jumping = false;
+            }
+
+            if (rb.velocity.y < 0)
+            {
+                rb.gravityScale = fallGravityScale;
+                jumping = false;
             }
         }
+    }
 
-        if (transform.rotation.y != 0)
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+
+        if (jumpCancelled && jumping && rb.velocity.y > 0)
         {
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                transform.Rotate(-kiri);
-            }
+            rb.AddForce(Vector2.down * cancelRate);
         }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(Vector3.right * Time.deltaTime * playerSpeed);
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(Vector3.right * Time.deltaTime * playerSpeed);
-        }
-
-        horizontal = Input.GetAxisRaw("Horizontal");
-
-        //Jalan menggunakan axis
-        //transform.Translate(Vector3.right * horizontal * playerSpeed * Time.deltaTime);
-
-
-        
-
-        if(ayam == true)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                rb.AddForce(Vector2.up * jumpForce);
-                
-                ayam = false;
-
-                //rb.velocity = new Vector2(0, jumpForce);
-            }
-        }
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("Ground"))
         {
-            ayam = true;
+            checker = 1;
+            hasJumped = false;
         }
     }
-
-
 }

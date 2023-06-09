@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MatiPlayer : MonoBehaviour
 {
@@ -20,8 +21,9 @@ public class MatiPlayer : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
-            
+            LevelManager.manager.GameOver();
+            gameObject.SetActive(false);
         }
-    }
+    }        
 }
+    

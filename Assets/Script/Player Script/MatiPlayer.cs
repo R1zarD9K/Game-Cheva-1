@@ -28,6 +28,10 @@ public class MatiPlayer : MonoBehaviour
             LevelManager.manager.GameOver();
             gameObject.SetActive(false);
         }
-    }        
+    }
+
+    
+
+
 }
     

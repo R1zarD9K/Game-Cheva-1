@@ -4,23 +4,35 @@ using UnityEngine;
 
 public class FakeGround : MonoBehaviour
 {
-    // Start is called before the first frame update
+    float ukuran;
+    bool getaran = false;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        ukuran = Random.Range(0.1f, 0.15f);
+
+        if(getaran == true)
+        {
+            //untuk membuat tanahnya getar2, angka sebelum var ukuran adalah ukuran asli dari game objek
+            transform.localScale = new Vector3(4.472525f + ukuran, 1 + ukuran, 1 + ukuran);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        
+
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            
+            getaran = true;
+            Destroy(gameObject,3f);
         }
     }
 }

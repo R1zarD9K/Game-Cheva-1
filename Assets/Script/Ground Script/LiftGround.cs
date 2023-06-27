@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LiftGround : MonoBehaviour
 {
-    public float speed = 0;
+    public float speed = 0f;
 
     
     // Start is called before the first frame update

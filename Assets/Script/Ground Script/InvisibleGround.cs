@@ -19,12 +19,25 @@ public class InvisibleGround : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            this.gameObject.AddComponent<SpriteRenderer>().sprite = tanah;
-            this.gameObject.AddComponent<BoxCollider2D>();
+            // Get the collision point in world space
+            Vector2 collisionPoint = collision.ClosestPoint(transform.position);
+
+            // Check if the player collided from below
+            if (collisionPoint.y < transform.position.y)
+            {
+                // Add the required components
+                SpriteRenderer spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+                spriteRenderer.sprite = tanah;
+
+                BoxCollider2D boxCollider = gameObject.AddComponent<BoxCollider2D>();
+                boxCollider.usedByComposite = true;
+
+            }
         }
     }
 }
+

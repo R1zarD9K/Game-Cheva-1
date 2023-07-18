@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyDead : MonoBehaviour
 {
+    [SerializeField] private AudioSource enemyDeathSoundEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,13 +14,21 @@ public class EnemyDead : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    }
 
+    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Peluru"))
         {
-            Destroy(gameObject);
+            StartCoroutine(EnemyDeath());
         }
+    }
+
+    IEnumerator EnemyDeath()
+    {
+        enemyDeathSoundEffect.Play();
+        yield return new WaitForSeconds(0.6f);
+        Destroy(gameObject);
     }
 }

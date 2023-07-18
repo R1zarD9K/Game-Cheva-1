@@ -26,6 +26,8 @@ public class PlayerMove : MonoBehaviour
     bool jumpCancelled;
     float cancelRate = 50;
 
+    [SerializeField] private AudioSource jumpSoundEffect;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -60,6 +62,7 @@ public class PlayerMove : MonoBehaviour
             jumping = true;
             hasJumped = true;
             buttonPressedTime = 0;
+            jumpSoundEffect.Play();
         }
 
         if (jumping)

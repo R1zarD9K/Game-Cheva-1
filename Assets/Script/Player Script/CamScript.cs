@@ -18,6 +18,6 @@ public class CamScript : MonoBehaviour
     void LateUpdate()
     {
         //mengubah posisi kamera mengikuti player, tapi dengan tambahan koordinat supaya posisinya sesuai dengan koordinat yang diinginkan
-        transform.position = posisi + new Vector3(player.transform.position.x,0,0);
+        transform.position = posisi + new Vector3(player.transform.position.x,player.transform.position.y,0);
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Peluru
   - Batas
+  - Bawah
   layers:
   - Default
   - TransparentFX

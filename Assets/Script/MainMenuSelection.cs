@@ -13,7 +13,7 @@ public class MainMenuSelection : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level 1");
     }
 
     public void StageSelect()

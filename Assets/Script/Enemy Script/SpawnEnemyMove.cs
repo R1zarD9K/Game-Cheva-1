@@ -5,16 +5,17 @@ using UnityEngine;
 public class SpawnEnemyMove : MonoBehaviour
 {
     public float speed = 0;
+    public float rotate = 180;
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.Translate(Vector3.left * speed * Time.deltaTime);
 
-        if(transform.position.y < -12)
+        if (transform.position.y < -12)
         {
             Destroy(gameObject);
         }
@@ -22,9 +23,15 @@ public class SpawnEnemyMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Batas"))
+        if (collision.gameObject.CompareTag("Batas"))
         {
-            speed = speed * -1;
+
+            rotate = rotate * -1;
+            transform.Rotate(Vector3.up * rotate);
+
+            //speed = speed * -1;
+
+
         }
     }
 }

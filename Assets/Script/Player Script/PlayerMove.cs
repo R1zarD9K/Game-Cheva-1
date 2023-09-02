@@ -14,9 +14,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float jumpHeight = 5;
     [SerializeField] float gravityScale = 5;
     [SerializeField] float fallGravityScale = 15;
-    public float playerSpeed = 0;
     float jumpForce = 15;
     Rigidbody2D rb;
+
+    public Animator animator;
 
     bool hasJumped = false;
     float buttonPressedTime;
@@ -44,8 +45,13 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A))
             {
                 transform.Rotate(kiri);
+                animator.SetFloat("Speed", Mathf.Abs(1));
             }
+
+            
         }
+
+        
 
         //Belok Kanan
         if (transform.rotation.y != 0)
@@ -53,7 +59,18 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.D))
             {
                 transform.Rotate(-kiri);
+                animator.SetFloat("Speed", Mathf.Abs(1));
             }
+        }
+
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            animator.SetFloat("Speed", Mathf.Abs(0));
+        }
+
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            animator.SetFloat("Speed", Mathf.Abs(0));
         }
 
         if (!hasJumped && Input.GetKeyDown(KeyCode.Space))
@@ -87,6 +104,8 @@ public class PlayerMove : MonoBehaviour
     {
         
         rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+
+        
 
         if (jumpCancelled && jumping && rb.velocity.y > 0)
         {

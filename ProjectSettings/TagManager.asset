@@ -9,6 +9,7 @@ TagManager:
   - Peluru
   - Batas
   - Bawah
+  - BatasBoss
   layers:
   - Default
   - TransparentFX

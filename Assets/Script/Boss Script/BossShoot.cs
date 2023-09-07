@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BossShoot : MonoBehaviour
+{
+    public GameObject enemy;
+    public float fireRate = 0f;
+
+    Vector3 ayam = new Vector3(6,-0.5f,0);
+    
+    void Start()
+    {
+        fireRate = Random.Range(3,10);
+        InvokeRepeating("spawnEnemy", 0f, fireRate);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void spawnEnemy()
+    {
+        Instantiate(enemy, transform.position - ayam, transform.rotation);
+    }
+}

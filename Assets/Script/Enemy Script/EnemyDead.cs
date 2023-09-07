@@ -6,6 +6,8 @@ public class EnemyDead : MonoBehaviour
 {
     [SerializeField] private AudioSource enemyDeathSoundEffect;
     // Start is called before the first frame update
+
+    public Animator animator;
     void Start()
     {
         
@@ -22,6 +24,7 @@ public class EnemyDead : MonoBehaviour
         if(collision.gameObject.CompareTag("Peluru"))
         {
             StartCoroutine(EnemyDeath());
+            animator.SetFloat("Dead", 1);
         }
     }
 

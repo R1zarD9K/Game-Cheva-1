@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2149039490381646010, guid: 4e98f46510ee9d9468c6a8305ee2d4b4, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1015331996861203888}
     - target: {fileID: 2149039490381646015, guid: 4e98f46510ee9d9468c6a8305ee2d4b4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -108,6 +112,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e98f46510ee9d9468c6a8305ee2d4b4, type: 3}
+--- !u!95 &1015331996861203888 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8748963855838196708, guid: 4e98f46510ee9d9468c6a8305ee2d4b4, type: 3}
+  m_PrefabInstance: {fileID: 8610248445165811284}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7687454693241110251 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2149039490381646015, guid: 4e98f46510ee9d9468c6a8305ee2d4b4, type: 3}
@@ -125,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2149039490381646010, guid: 4e98f46510ee9d9468c6a8305ee2d4b4, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1015331997255915535}
     - target: {fileID: 2149039490381646015, guid: 4e98f46510ee9d9468c6a8305ee2d4b4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -174,6 +187,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e98f46510ee9d9468c6a8305ee2d4b4, type: 3}
+--- !u!95 &1015331997255915535 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8748963855838196708, guid: 4e98f46510ee9d9468c6a8305ee2d4b4, type: 3}
+  m_PrefabInstance: {fileID: 8610248445844876267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7687454693652259668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2149039490381646015, guid: 4e98f46510ee9d9468c6a8305ee2d4b4, type: 3}

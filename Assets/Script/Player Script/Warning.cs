@@ -5,6 +5,7 @@ using UnityEngine;
 public class Warning : MonoBehaviour
 {
     public GameObject warningSign;
+    [SerializeField] private AudioSource warningSoundEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -21,5 +22,6 @@ public class Warning : MonoBehaviour
     void warning()
     {
         Instantiate(warningSign, transform.position, transform.rotation);
+        warningSoundEffect.Play();
     }
 }

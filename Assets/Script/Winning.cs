@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Winning : MonoBehaviour
 {
+    [SerializeField] private AudioSource winningSoundEffect;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
             unlockNewLevel();
             SceneController.instance.nextLevel();
+            winningSoundEffect.Play();
         }
     }
 

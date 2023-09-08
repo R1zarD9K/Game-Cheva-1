@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager manager;
 
     public GameObject deathPanel;
+    public GameObject winPanel;
 
     public void Awake()
     {
@@ -27,5 +28,15 @@ public class LevelManager : MonoBehaviour
     public void OpenMenu()
     {
         SceneManager.LoadScene("Main Menu");
+    }
+
+    public void WinLevel()
+    {
+        winPanel.SetActive(true);
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class BossDead : MonoBehaviour
 {
     [SerializeField] private AudioSource enemyDeathSoundEffect;
+
+    public GameObject winPanel;
     // Start is called before the first frame update
 
     int nyawa = 100;
@@ -31,6 +33,7 @@ public class BossDead : MonoBehaviour
             {
                 StartCoroutine(EnemyDeath());
                 animator.SetFloat("Dead", 1);
+                
             }
             
         }
@@ -40,6 +43,7 @@ public class BossDead : MonoBehaviour
     {
         enemyDeathSoundEffect.Play();
         yield return new WaitForSeconds(0.6f);
+        winPanel.SetActive(true);
         Destroy(gameObject);
     }
 }
